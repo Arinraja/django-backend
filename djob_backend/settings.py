@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for djob_backend project.
 
@@ -27,8 +29,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['django-backend-f9hr.onrender.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['*']
 
 USER_CREATE_PASSWORD_RETYPE = False
 
