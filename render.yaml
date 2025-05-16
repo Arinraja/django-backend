@@ -4,8 +4,12 @@ services:
     env: python
     region: oregon
     branch: main
-    rootDirectory: 
+    rootDirectory: .
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn djob_backend.wsgi --log-file -"
     autoDeploy: true
     plan: free
+buildCommand: |
+  pip install -r requirements.txt
+  python manage.py makemigrations
+  python manage.py migrate
