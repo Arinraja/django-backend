@@ -27,7 +27,8 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-backend-f9hr.onrender.com', 'localhost', '127.0.0.1']
+
 
 USER_CREATE_PASSWORD_RETYPE = False
 
@@ -54,6 +55,7 @@ CORS_ALLOWED_ORIGINS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -154,3 +156,6 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': False,
     'SERIALIZERS': {},
 }
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
