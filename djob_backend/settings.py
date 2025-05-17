@@ -1,5 +1,5 @@
 import os
-
+import dj_database_url
 """
 Django settings for djob_backend project.
 
@@ -95,6 +95,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get("postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a")
+    )
 }
 
 
