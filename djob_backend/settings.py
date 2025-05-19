@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    "http://127.0.0.1:3000",
 ]
 
 MIDDLEWARE = [
@@ -98,11 +100,11 @@ DATABASES = {
 }
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a")
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get("postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a")
+#     )
+# }
 
 
 # Password validation
@@ -167,3 +169,15 @@ DJOSER = {
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
