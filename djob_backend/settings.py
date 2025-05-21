@@ -54,8 +54,10 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     # 'http://localhost:3000',
     # "http://127.0.0.1:3000",
-        "https://nuxt-frontend-0946.onrender.com",
+      
+     "https://nuxt-frontend-0946.onrender.com",
 ]
+CORS_ALLOW_CREDENTIALS = True  # For cookies or token headers
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,9 +103,16 @@ WSGI_APPLICATION = 'djob_backend.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.environ.get('postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a'))
+# }
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a'))
+    'default': dj_database_url.config(
+        default='postgresql://myuser_m70a_user:2N2g3OxZwsnx3iFQAnDE3ogztyeXeqqh@dpg-d0k47jbuibrs7396mpf0-a/myuser_m70a',
+        conn_max_age=600
+    )
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
